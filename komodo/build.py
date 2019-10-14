@@ -36,7 +36,7 @@ def rpm(pkg, ver, path, prefix, *args, **kwargs):
     with pushd(prefix):
         print('Installing {} ({}) from rpm'.format(pkg, ver))
         shell('rpm2cpio {}.rpm | cpio -imd --quiet'.format(path))
-        shell('rsync -a usr .')
+        shell('mv usr/* .')
         shell('rm -rf usr')
 
 
